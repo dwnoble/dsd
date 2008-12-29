@@ -1,0 +1,9 @@
+doc
+*~
+._*
+.DS_Store
+scripts/bochsout.txt
+scripts/floppy.img
+build/*.o
+build/kernel
+

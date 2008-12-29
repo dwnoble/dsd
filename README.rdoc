@@ -1,0 +1,37 @@
+== About 
+
+DSD is my attempt at building a UNIX-clone toy operating system by following a tutorial by James Molloy.  James' tutorial can be found online at:
+
+ http://www.jamesmolloy.co.uk/tutorial_html/index.html
+
+DSD uses Grub for a bootloader, and can currently run on top of Bochs (IA-32).
+
+== Build DSD
+
+The first time you check out DSD, you will need to rename the scripts/floppy-sample.img file to just scripts/floppy.img
+
+ cp scripts/floppy-sample.img scripts/floppy.img
+
+Now, to build DSD, we will need to compile the DSD kernel:
+
+ cd build
+ make clean
+ make
+
+Next, we will move the DSD kernel to the bootable floppy.img disk image.
+
+ ./update_image.sh
+
+The disk image already has Grub configured to boot the DSD kernel.  Now we are ready to start Bochs:
+
+ ./run_bochs.sh
+
+Pretty anticlimactic, I know...  More excitement is soon to come!
+
+== Development Environment
+
+I am running Ubuntu 8.10 x86_64 for my development environment.
+
+ sudo apt-get install bochs bochs-x
+
+I made a brief attempt to build DSD on Mac OS X, but ran into trouble with OS X's version of the BSD Linker.
