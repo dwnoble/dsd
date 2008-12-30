@@ -2,14 +2,13 @@
 
 # Based off of makefile for JamesM's kernel tutorials.
 
-SOURCES=boot.o main.o common.o monitor.o
+SOURCES=boot.o main.o common.o monitor.o string.o
 SRCDIR=../src
 
-CFLAGS=-nostdlib -nostdinc -fno-builtin -fno-stack-protector -m32 -I../inc
+CFLAGS=-nostdlib -nostdinc -fno-builtin -fno-stack-protector -m32 -I../inc -I../inc/common
 LDFLAGS=-T $(SRCDIR)/Tlink.ld -melf_i386
 ASFLAGS=-felf
 CC=gcc
-
 AS=nasm
 
 all: $(SOURCES) link 
@@ -27,7 +26,10 @@ main.o:
 	$(CC) $(CFLAGS) $(SRCDIR)/main.c -c -o main.o
 
 common.o:
-	$(CC) $(CFLAGS) $(SRCDIR)/common.c -c -o common.o
+	$(CC) $(CFLAGS) $(SRCDIR)/common/common.c -c -o common.o
+
+string.o:
+	$(CC) $(CFLAGS) $(SRCDIR)/common/string.c -c -o string.o
 
 monitor.o:
 	$(CC) $(CFLAGS) $(SRCDIR)/monitor.c -c -o monitor.o
