@@ -18,6 +18,10 @@ Now, to build DSD, we will need to compile the DSD kernel:
  make clean
  make
 
+Now we must create the default DSD mount point, /mnt/dsd
+ 
+ sudo mkdir /mnt/dsd
+
 Next, we will move the DSD kernel to the bootable floppy.img disk image.
 
  ./update_image.sh
@@ -32,6 +36,7 @@ Pretty anticlimactic, I know...  More excitement is soon to come!
 
 I am running Ubuntu 8.10 x86_64 for my development environment.
 
+ sudo apt-get install nasm
  sudo apt-get install bochs bochs-x
 
 I made a brief attempt to build DSD on Mac OS X, but ran into trouble with OS X's version of the BSD Linker.

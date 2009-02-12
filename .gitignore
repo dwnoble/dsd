@@ -7,4 +7,7 @@ scripts/floppy.img
 build/dsd/*.o
 build/common/*.o
 build/kernel
+test/dsd/*.o
+test/common/*.o
+test/test
 
