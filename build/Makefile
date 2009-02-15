@@ -4,7 +4,7 @@
 VPATH=../src
 
 # Add new source files to the following categories to include in the DSD build
-DSD_C_SOURCES := main.c monitor.c isr.c descriptor_tables.c timer.c
+DSD_C_SOURCES := main.c monitor.c isr.c descriptor_tables.c timer.c kheap.c paging.c
 DSD_ASM_SOURCES := boot.s gdt.s interrupt.s
 COMMON_C_SOURCES := common.c string.c
 
@@ -12,7 +12,7 @@ COMMON_C_SOURCES := common.c string.c
 DSD_C_OBJECTS := $(DSD_C_SOURCES:%.c=dsd/%.o)
 DSD_ASM_OBJECTS := $(DSD_ASM_SOURCES:%.s=dsd/%.o)
 COMMON_C_OBJECTS := $(COMMON_C_SOURCES:%.c=common/%.o)
-ALL_OBJECTS := $(DSD_C_OBJECTS) $(DSD_ASM_OBJECTS) $(COMMON_C_OBJECTS)
+ALL_OBJECTS := $(DSD_ASM_OBJECTS) $(DSD_C_OBJECTS) $(COMMON_C_OBJECTS)
 
 # Compiler and linker settings
 CFLAGS=-nostdlib -nostdinc -fno-builtin -fno-stack-protector -m32 -I../inc/dsd -I../inc/common

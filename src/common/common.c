@@ -22,3 +22,4 @@ u16int inw(u16int port)
    asm volatile ("inw %1, %0" : "=a" (ret) : "dN" (port));
    return ret;
 }
+
