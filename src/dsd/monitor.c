@@ -144,7 +144,43 @@ void monitor_write(char *c)
 
 void monitor_write_hex(u32int n)
 {
-   // TODO: implement this yourself!
+    s32int tmp;
+
+    monitor_write("0x");
+
+    char noZeroes = 1;
+
+    int i;
+    for (i = 28; i > 0; i -= 4)
+    {
+        tmp = (n >> i) & 0xF;
+        if (tmp == 0 && noZeroes != 0)
+        {
+            continue;
+        }
+    
+        if (tmp >= 0xA)
+        {
+            noZeroes = 0;
+            monitor_put (tmp-0xA+'a' );
+        }
+        else
+        {
+            noZeroes = 0;
+            monitor_put( tmp+'0' );
+        }
+    }
+  
+    tmp = n & 0xF;
+    if (tmp >= 0xA)
+    {
+        monitor_put (tmp-0xA+'a');
+    }
+    else
+    {
+        monitor_put (tmp+'0');
+    }
+
 }
 
 // Outputs a number to the monitor
