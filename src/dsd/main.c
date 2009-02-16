@@ -10,19 +10,36 @@
 // All our initialisation calls will go in here.
 int main(struct multiboot *mboot_ptr)
 {
-    /*
-	monitor_clear();
+    monitor_clear();
+    monitor_write("Hello, DSD world\n");
+    return 0;
+}
+
+
+void gdt_idt_test(){
+    monitor_clear();
+    monitor_write("GDT/IDT test!\n");
+    asm volatile("int $0x3");
+	asm volatile("int $0x4");
+	// Enable interrupts
+	asm volatile("sti");
+}
+
+// Chapter 5 - Interrupt Requests and Programmable Interrupt Timer
+void irq_pit_test(){
+    monitor_clear();
 
 	// Initialise all the ISRs and segmentation
-	//init_descriptor_tables();
-	//asm volatile("int $0x3");
-	//asm volatile("int $0x4");
-	// Enable interrupts
-	//asm volatile("sti");
-	//init_timer(50); // Initialize timer to 50Hz
+	init_descriptor_tables();
+    monitor_write("Monitor Test\n");
+	init_timer(50); // Initialize timer to 50Hz
 	
+}
 
- 	// Initialise all the ISRs and segmentation
+
+// Chapter 6 - Paging
+void paging_test(){
+    // Initialise all the ISRs and segmentation
 	init_descriptor_tables();
 	// Initialise the screen (by clearing it)
 	monitor_clear();
@@ -34,8 +51,11 @@ int main(struct multiboot *mboot_ptr)
 	u32int do_page_fault = *ptr;
 
 	return 0;
-	*/
+}
 
+
+// Chapter 7 - Malloc
+void malloc_test(){
     // Initialise all the ISRs and segmentation
     init_descriptor_tables();
     // Initialise the screen (by clearing it)
@@ -56,6 +76,5 @@ int main(struct multiboot *mboot_ptr)
     u32int d = kmalloc(12);
     monitor_write(", d: ");
     monitor_write_hex(d);
-
-    return 0;
+    
 }
