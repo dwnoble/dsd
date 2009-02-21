@@ -18,7 +18,7 @@ extern heap_t *kheap;
 #define INDEX_FROM_BIT(a) (a/(8*4))
 #define OFFSET_FROM_BIT(a) (a%(8*4))
 
-#define PANIC(s) monitor_write(s); while(1);
+//#define PANIC(s) monitor_write(s); while(1);
 
 
 // Static function to set a bit in the frames bitset

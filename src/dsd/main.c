@@ -7,12 +7,24 @@
 #include "paging.h"
 #include "kheap.h"
 
+extern vidtest();
+
 // All our initialisation calls will go in here.
 int main(struct multiboot *mboot_ptr)
 {
+    u32int val=0;
+    u32int ctrl[512];
+    
     monitor_clear();
     monitor_write("Hello, DSD world\n");
-    asm volatile("int $0x10");
+    
+    val = vidtest();
+    monitor_write("Hello again, DSD world\n");
+    monitor_write_hex(val);
+    
+
+    
+    intV86(0x10, "ax,es:di", 0x4F00, 0, ctrl);
     return 0;
 }
 

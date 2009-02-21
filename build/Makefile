@@ -5,7 +5,7 @@ VPATH=../src
 
 # Add new source files to the following categories to include in the DSD build
 DSD_C_SOURCES := main.c monitor.c isr.c descriptor_tables.c timer.c kheap.c paging.c ordered_array.c
-DSD_ASM_SOURCES := boot.s gdt.s interrupt.s
+DSD_ASM_SOURCES := boot.s gdt.s interrupt.s video.s
 COMMON_C_SOURCES := common.c string.c
 
 # Object files
