@@ -22,9 +22,6 @@ int main(struct multiboot *mboot_ptr)
     monitor_write("Hello again, DSD world\n");
     monitor_write_hex(val);
     
-
-    
-    intV86(0x10, "ax,es:di", 0x4F00, 0, ctrl);
     return 0;
 }
 

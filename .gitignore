@@ -1,6 +1,7 @@
 doc
 *~
 ._*
+*.swp
 .DS_Store
 scripts/bochsout.txt
 scripts/floppy.img
